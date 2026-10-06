@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Agenda Telefônica</title>
+</head>
+<body>
+  <h1>Agenda Telefônica</h1>
+
+  <h2>Cadastrar</h2>
+  <form method="post" action="/cadastrar">
+    <input name="nome" placeholder="Nome" required>
+    <input name="telefone" placeholder="Telefone" required>
+    <button>Salvar</button>
+  </form>
+
+  <h2>Consultar</h2>
+  <form method="get" action="/">
+    <input name="busca" placeholder="Nome" value="{{ busca }}">
+    <button>Buscar</button>
+    <a href="/">Limpar</a>
+  </form>
+
+  <h2>Contatos</h2>
+  <ul>
+    {% for c in contatos %}
+      <li>{{ c.nome }} — {{ c.telefone }}</li>
+    {% else %}
+      <li>Nenhum contato encontrado.</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
